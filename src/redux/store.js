@@ -10,6 +10,8 @@ const initialState = {
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ],
+  filteredContacts: [],
+  isFiltered: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -25,6 +27,14 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         contacts: [...state.contacts, action.payload],
+      };
+    case 'contacts/filterContacts':
+      return {
+        ...state,
+        filteredContacts: state.contacts.filter(contact =>
+          contact.name.toLowerCase().includes(action.payload.toLowerCase())
+        ),
+        isFiltered: true,
       };
     default:
       return state;
@@ -45,6 +55,13 @@ export const addContact = values => {
       ...values,
       id: nanoid(), // Генеруємо унікальний ідентифікатор
     },
+  };
+};
+
+export const filterContacts = value => {
+  return {
+    type: 'contacts/filterContacts',
+    payload: value,
   };
 };
 

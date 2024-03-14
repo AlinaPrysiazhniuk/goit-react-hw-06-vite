@@ -1,8 +1,21 @@
 import { useId } from 'react';
 import css from './SearchBox.module.css';
+import { useDispatch } from 'react-redux';
+import { filterContacts } from '../../redux/store';
+import { useState } from 'react';
 
-export default function SearchContact({ value, onFilter }) {
+export default function SearchContact() {
   const serchBboxId = useId();
+  const dispatch = useDispatch();
+  const [value, setValue] = useState('');
+
+  const valueChange = e => {
+    e.preventDefault();
+    setValue(e.target.value);
+    dispatch(filterContacts(e.target.value));
+    console.log(value);
+  };
+
   return (
     <div className={css.searchBox}>
       <label htmlFor={serchBboxId}>Find contacts by name</label>
@@ -11,7 +24,7 @@ export default function SearchContact({ value, onFilter }) {
         name="searchbox"
         id={serchBboxId}
         value={value}
-        onChange={e => onFilter(e.target.value)}
+        onChange={valueChange}
         className={css.input_filter}
       />
     </div>

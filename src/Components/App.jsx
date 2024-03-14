@@ -18,7 +18,7 @@ function App() {
   // };
 
   // const [contacts, setContacts] = useState(initialContacts);
-  const [filter, setFilter] = useState('');
+  // const [filter, setFilter] = useState('');
 
   //при додаванні нового контаку ми спочатку в новий масив розпилюємо попердній масив
   //контактів, а потім в кінці додаємо новий
@@ -49,7 +49,7 @@ function App() {
     <>
       <h1>Phonebook</h1>
       <ContactForm />
-      <SearchContact value={filter} onFilter={setFilter} />
+      <SearchContact />
       <ContactList />
     </>
   );
