@@ -1,12 +1,14 @@
 import Contact from '../Contact/Contact';
 import css from './ContactList.module.css';
+import { useSelector } from 'react-redux';
 
-export default function ContactList({ contacts, onDelete }) {
+export default function ContactList() {
+  const initialContacts = useSelector(state => state.contacts);
   return (
     <ul className={css.list}>
-      {contacts.map(contact => (
+      {initialContacts.map(contact => (
         <li key={contact.id} className={css.item}>
-          <Contact data={contact} onDelete={onDelete} />
+          <Contact contact={contact} />
         </li>
       ))}
     </ul>

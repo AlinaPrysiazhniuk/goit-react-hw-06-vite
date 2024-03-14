@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
-// import css from './App.module.css';
+import { useState } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import SearchContact from './SearchBox/SearchBox';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 function App() {
   // const initialContacts = [
@@ -13,55 +12,47 @@ function App() {
   //   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   // ];
 
-  const getInitialContacts = () => {
-    const contactsStorage = window.localStorage.getItem('contacts');
-    return contactsStorage !== null ? JSON.parse(contactsStorage) : [];
-  };
+  // const getInitialContacts = () => {
+  //   const contactsStorage = window.localStorage.getItem('contacts');
+  //   return contactsStorage !== null ? JSON.parse(contactsStorage) : [];
+  // };
 
-  const [contacts, setContacts] = useState(getInitialContacts);
+  // const [contacts, setContacts] = useState(initialContacts);
   const [filter, setFilter] = useState('');
 
   //при додаванні нового контаку ми спочатку в новий масив розпилюємо попердній масив
   //контактів, а потім в кінці додаємо новий
-  const addContact = newContact => {
-    setContacts(prevContacts => {
-      return [...prevContacts, newContact];
-    });
-  };
+  // const addContact = newContact => {
+  //   setContacts(prevContacts => {
+  //     return [...prevContacts, newContact];
+  //   });
+  // };
 
   //при видаленні контакту ми фільтруємо масив контактів і повертаємо лише ті контакти
   //ідентифікатори яких не співпадають з вибраним
-  const deleteContact = contactId => {
-    setContacts(prevContacts => {
-      return prevContacts.filter(contact => contact.id !== contactId);
-    });
-    setFilter('');
-  };
+  // const deleteContact = contactId => {
+  //   setContacts(prevContacts => {
+  //     return prevContacts.filter(contact => contact.id !== contactId);
+  //   });
+  //   setFilter('');
+  // };
 
-  const filterContact = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  // const filterContact = contacts.filter(contact =>
+  //   contact.name.toLowerCase().includes(filter.toLowerCase())
+  // );
 
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
+      <ContactForm />
       <SearchContact value={filter} onFilter={setFilter} />
-      <ContactList contacts={filterContact} onDelete={deleteContact} />
+      <ContactList />
     </>
   );
 }
 
 export default App;
-
-App.propTypes = {
-  addContact: PropTypes.func,
-  filter: PropTypes.string,
-  setFilter: PropTypes.func,
-  filterContact: PropTypes.array,
-  deleteContact: PropTypes.func,
-};
