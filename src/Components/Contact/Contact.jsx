@@ -1,8 +1,8 @@
 import css from './Contact.module.css';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { IoMdContact } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContacts } from '../../redux/store';
+import { useDispatch } from 'react-redux';
+import { deleteContacts } from '../../redux/tasksSlice';
 
 export default function Contact({ contact }) {
   // const contacts = useSelector(state => state.contacts);

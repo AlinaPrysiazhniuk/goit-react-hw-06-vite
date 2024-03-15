@@ -1,8 +1,8 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import SearchContact from './SearchBox/SearchBox';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 function App() {
   // const initialContacts = [
