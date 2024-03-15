@@ -30,7 +30,8 @@ export default function ContactForm() {
 
   const handleSubmit = (values, actions) => {
     // console.log(values);
-    dispatch(addContact({ ...values, id: nanoid() }));
+    dispatch(addContact({ ...values }));
+    // console.log(dispatch(addContact({ ...values })));
     // console.log(dispatch(addContact({ ...values, id: nanoid() })));
     // console.log('submit');
     // onAdd({ ...values, id: nanoid() });

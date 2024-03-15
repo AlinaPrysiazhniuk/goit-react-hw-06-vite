@@ -11,7 +11,7 @@ export default function Contact({ contact }) {
   const handleDelete = () => {
     console.log('delete');
     dispatch(deleteContacts(contact.id));
-    console.log(dispatch(deleteContacts(contact.id)));
+    // console.log(dispatch(deleteContacts(contact.id)));
   };
 
   return (

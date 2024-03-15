@@ -3,9 +3,7 @@
 
 export const filterReducer = (
   state = {
-    filters: {
-      name: '',
-    },
+    name: '',
   },
   action
 ) => {
@@ -13,10 +11,7 @@ export const filterReducer = (
     case 'filters/filterContacts':
       return {
         ...state,
-        filters: {
-          ...state.filters,
-          name: action.payload,
-        },
+        name: action.payload,
       };
 
     default:

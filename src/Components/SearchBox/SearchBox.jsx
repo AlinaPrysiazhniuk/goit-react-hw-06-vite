@@ -13,7 +13,6 @@ export default function SearchContact() {
     e.preventDefault();
     setValue(e.target.value);
     dispatch(filterContacts(e.target.value));
-    console.log(e.target.value);
   };
 
   return (
