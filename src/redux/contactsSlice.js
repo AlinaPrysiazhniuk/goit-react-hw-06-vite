@@ -33,7 +33,16 @@ export const contactsReducer = (state = initialState, action) => {
         },
       };
     case 'contacts/filterContacts':
+      if (action.payload.trim() === '') {
+        return {
+          ...state,
+          contacts: {
+            items: initialState.contacts.items,
+          },
+        };
+      }
       return {
+        ...state,
         contacts: {
           items: state.contacts.items.filter(contact =>
             contact.name.toLowerCase().includes(action.payload.toLowerCase())
