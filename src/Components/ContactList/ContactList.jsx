@@ -11,7 +11,14 @@ export default function ContactList() {
 
   const initialContacts = useSelector(state => state.contacts.contacts.items);
   console.log(initialContacts);
+  const filteredName = useSelector(state => state.filters.name);
+  console.log(filteredName);
 
+  const filteredContacts = initialContacts.filter(contact =>
+    contact.name.toLowerCase().includes(filteredName)
+  );
+
+  console.log(filteredContacts);
   return (
     <ul className={css.list}>
       {initialContacts.map(contact => (
