@@ -1,5 +1,5 @@
 /* eslint-disable no-case-declarations */
-// import { initialState } from './contactsSlice';
+// import { contacts } from './contactsSlice';
 
 export const filterReducer = (
   state = {
@@ -19,6 +19,7 @@ export const filterReducer = (
   }
 };
 
+// console.log(contacts);
 export const filterContacts = value => {
   return {
     type: 'filters/filterContacts',
