@@ -1,13 +1,15 @@
-export const filterReducer = (
-  state = {
-    name: '',
-  },
-  action
-) => {
+// import { selectContacts } from './contactsSlice';
+
+const initialState = {
+  name: '',
+};
+
+export const filterReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'filters/filterContacts':
       return {
         ...state,
+        // ...selectContacts(),
         name: action.payload,
       };
 
@@ -22,3 +24,5 @@ export const filterContacts = value => {
     payload: value,
   };
 };
+
+export const selectNameFilter = state => state.filters.name;
