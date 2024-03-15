@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from 'redux';
 import { composeWithDevTools } from '@redux-devtools/extension';
-import { contactsReducer } from './tasksSlice';
+import { contactsReducer } from './contactsSlice';
 
 const rootReducer = combineReducers({
   contacts: contactsReducer,
@@ -9,4 +9,3 @@ const rootReducer = combineReducers({
 /* eslint-disable no-case-declarations */
 
 export const store = createStore(rootReducer, composeWithDevTools());
-console.log(store);

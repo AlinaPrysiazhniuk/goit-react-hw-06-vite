@@ -5,7 +5,7 @@ import 'yup-phone-lite';
 
 import css from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/tasksSlice';
+import { addContact } from '../../redux/contactsSlice';
 import { nanoid } from 'nanoid';
 
 const initialValues = {
