@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import css from './SearchBox.module.css';
 import { useDispatch } from 'react-redux';
-import { filterContacts } from '../../redux/tasksSlice';
+import { changeFilter } from '../../redux/filtersSlice';
 import { useState } from 'react';
 
 export default function SearchContact() {
@@ -12,7 +12,7 @@ export default function SearchContact() {
   const valueChange = e => {
     e.preventDefault();
     setValue(e.target.value);
-    dispatch(filterContacts(e.target.value));
+    dispatch(changeFilter(e.target.value));
   };
 
   return (
