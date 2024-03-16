@@ -1,5 +1,7 @@
 import { nanoid } from 'nanoid';
 
+import { createSlice } from '@reduxjs/toolkit';
+
 const initialState = {
   items: [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -9,40 +11,57 @@ const initialState = {
   ],
 };
 
-export const contactsReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'contacts/deleteContact':
-      return {
-        ...state,
+// export const deleteContact = createAction('contacts/deleteContact');
+// export const addContact = createAction('contacts/addContact');
 
-        items: state.items.filter(contact => contact.id !== action.payload),
-      };
-    case 'contacts/addContact':
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-      };
+// export const contactsReducer = createReducer(initialState, builder => {
+//   builder
+//     .addCase(deleteContact, (state, action) => {
+//       state.items = state.items.filter(
+//         contact => contact.id !== action.payload
+//       );
+//     })
+//     .addCase(addContact, (state, action) => {
+//       return {
+//         ...state,
+//         items: [...state.items, action.payload],
+//       };
+//     });
+// });
 
-    default:
-      return state;
-  }
-};
-
-export const deleteContact = contactId => {
-  return {
-    type: 'contacts/deleteContact',
-    payload: contactId,
-  };
-};
-
-export const addContact = values => {
-  return {
-    type: 'contacts/addContact',
-    payload: {
-      id: nanoid(),
-      ...values,
+const slice = createSlice({
+  name: 'contacts',
+  initialState: initialState,
+  reducers: {
+    deleteContact(state, action) {
+      state.items = state.items.filter(
+        contact => contact.id !== action.payload
+      );
     },
-  };
-};
+    addContact: {
+      reducer: (state, action) => {
+        return {
+          ...state,
+          items: [...state.items, action.payload],
+        };
+      },
+      prepare: value => {
+        return {
+          payload: {
+            ...value,
+            id: nanoid(),
+          },
+        };
+      },
+    },
+  },
+});
 
+export const { deleteContact, addContact } = slice.actions;
+export default slice.reducer;
 export const selectContacts = state => state.contacts.items;
+
+// return {
+//   ...state,
+//   items: state.items.filter(contact => contact.id !== action.payload),
+// };
