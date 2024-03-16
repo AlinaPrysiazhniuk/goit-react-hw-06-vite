@@ -11,24 +11,6 @@ const initialState = {
   ],
 };
 
-// export const deleteContact = createAction('contacts/deleteContact');
-// export const addContact = createAction('contacts/addContact');
-
-// export const contactsReducer = createReducer(initialState, builder => {
-//   builder
-//     .addCase(deleteContact, (state, action) => {
-//       state.items = state.items.filter(
-//         contact => contact.id !== action.payload
-//       );
-//     })
-//     .addCase(addContact, (state, action) => {
-//       return {
-//         ...state,
-//         items: [...state.items, action.payload],
-//       };
-//     });
-// });
-
 const slice = createSlice({
   name: 'contacts',
   initialState: initialState,
